@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 import time
 import csv
-from pytest.testcase.common.driver import Driver
+# from pytest.testcase.common.driver import Driver
 from pytest.testcase.page.feedspage import FeedsPage
 from pytest.testcase.common.common import CommonUse
-from pytest.testcase.common.base import BaseUse
 
 
 class FeedSlide(object):
-    driver = Driver().get_driver()
-    print(driver)
+    # driver = Driver().get_driver()
     feedspage = FeedsPage()
     common = CommonUse()
 
@@ -27,7 +25,10 @@ class FeedSlide(object):
 
     def test_slide(self, n):
         self.feedspage.feeds_entrance()
-        self.feedspage.attention_video()
+        self.feedspage.attention_page()
+        self.common.delete_cache()
+        time.sleep(2)
+        self.feedspage.attention_page_video()
         self.feedspage.click_debug_info()
         filename = "../result/feeds_slide_data-%s.csv" % self.common.get_time()
         with open(filename, "w", newline="") as csvfile:
@@ -35,8 +36,8 @@ class FeedSlide(object):
             wr.writerow(["post_id", "秒开时间"])
             for i in range(n):
                 self.feedspage.swipe_up()
-                time.sleep(2)
+                time.sleep(0.8)
                 seconds_data = self.get_seconds_data()
                 wr.writerow(seconds_data)
                 print(seconds_data)
-                time.sleep(1)
+                # time.sleep(0.4)
