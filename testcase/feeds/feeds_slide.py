@@ -6,7 +6,7 @@ from pytest.testcase.page.feedspage import FeedsPage
 from pytest.testcase.common.common import CommonUse
 
 
-class FeedSlide(object):
+class FeedsSlide(object):
     # driver = Driver().get_driver()
     feedspage = FeedsPage()
     common = CommonUse()
@@ -40,4 +40,3 @@ class FeedSlide(object):
                 seconds_data = self.get_seconds_data()
                 wr.writerow(seconds_data)
                 print(seconds_data)
-                # time.sleep(0.4)
