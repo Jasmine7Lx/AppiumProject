@@ -2,18 +2,18 @@
 from pytest.testcase.common.base import BaseUse
 import pytest.testcase.page.elementConfig as point
 import time
-import os
 
 
 class FeedsPage(BaseUse):
     def feeds_entrance(self):
         self.find_element(*point.feeds['entrance']).click()
 
-    def attention_video(self):
+    def attention_page(self):
         self.find_element(*point.feeds['att_tap']).click()
         time.sleep(1)
-        self.find_element(*point.feeds['att_name']).click()         #Jas的关注人
-        time.sleep(1)
+        self.find_element(*point.feeds['att_name']).click()         # Jas的关注人
+
+    def attention_page_video(self):
         self.find_element(*point.feeds['att_first_video']).click()
 
     def hot_video(self):
@@ -32,7 +32,7 @@ class FeedsPage(BaseUse):
         x1 = s['width'] * 0.5  # x坐标
         y1 = s['height'] * 0.8  # 起点y坐标
         y2 = s['height'] * 0.4  # 终点y坐标
-        self.driver.swipe(x1, y1, x1, y2)
+        self.driver.flick(x1, y1, x1, y2)       # flick 甩动；swipe 按住不放再移动
 
     # 向下滑动
     def swipe_down(self):
@@ -58,9 +58,8 @@ class FeedsPage(BaseUse):
         x2 = s['width'] * 0.1
         self.driver.swipe(x1, y1, x2, y1)
 
-    # 删除缓存
-    def delete_cache(self):
-        os.system('adb shell rm -r /sdcard/nerv-cache2/*')
-        print('成功删除nerv-cache')
-        os.system('adb shell rm -r sdcard/Android/data/com.imo.android.imoimalpha/cache/*')
-        print('成功删除imo-cache')
+    # 点击物理返回键
+    def return_page(self):
+        self.driver.keyevent(4)
+
+
