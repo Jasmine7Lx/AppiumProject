@@ -25,20 +25,19 @@ class FeedCover(object):
         return seconds_data_list
 
     def test_repeat_cover(self, n):
-        self.feedspage.feeds_entrance()
-        self.feedspage.attention_page()
-        self.feedspage.attention_page_video()
-        self.feedspage.click_debug_info()
         filename = "../result/feeds_cover_data-%s.csv" % self.common.get_time()
         with open(filename, "w", newline="") as csvfile:
             wr = csv.writer(csvfile)
             wr.writerow(["post_id", "秒开时间"])
             for i in range(n):
-                self.feedspage.return_page()
-                self.common.delete_cache()
-                time.sleep(3)
+                self.feedspage.feeds_entrance()
+                self.feedspage.attention_page()
                 self.feedspage.attention_page_video()
+                time.sleep(3)
                 seconds_data = self.get_seconds_data()
                 wr.writerow(seconds_data)
                 print(seconds_data)
-                time.sleep(1)
+                self.feedspage.return_page()
+                self.common.delete_cache()
+                time.sleep(5)
+                self.common.reopen_app()

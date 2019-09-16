@@ -24,4 +24,10 @@ feeds = {
     'debug': (By.XPATH, "//*[@text='debug']"),
     'debug_info': (By.ID, "com.imo.android.imoimalpha.Trending:id/tv_video_debug_info")
 }
-
+channel = {
+    'contact_tab': (By.ID, "com.imo.android.imoimalpha:id/tv_tab_text"),
+    'att_channel': (By.XPATH, "//*[@text='关注']"),
+    'test_channel_1': (By.XPATH, "//*[@text='test_channel_1']"),
+    'channel_movie': (By.ID, "com.imo.android.imoimalpha:id/title_tv"),
+    'channel_debug': (By.CLASS_NAME, "android.widget.TextView"),
+}

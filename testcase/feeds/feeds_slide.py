@@ -17,7 +17,7 @@ class FeedsSlide(object):
         split_seconds_open = data_info.splitlines()
         print(split_seconds_open)
         post_id = (split_seconds_open[1])[8:]
-        open_time = (split_seconds_open[7])[14:]
+        open_time = (split_seconds_open[5])[14:]
         print(open_time)
         seconds_data_str = '\'' + post_id + ',' + open_time
         seconds_data_list = seconds_data_str.split(",")

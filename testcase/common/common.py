@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 import datetime
 import os
+import time
 
 
 class CommonUse(object):
@@ -30,3 +31,8 @@ class CommonUse(object):
         print('成功删除nerv-cache2')
         os.system('adb shell rm -r sdcard/Android/data/com.imo.android.imoimalpha/cache/*')
         print('成功删除imo-cache')
+
+    def reopen_app(self):
+        os.system('adb shell am force-stop com.imo.android.imoimalpha')
+        time.sleep(2)
+        os.system('adb shell am start -n com.imo.android.imoimalpha/com.imo.android.imoim.activities.Home')
